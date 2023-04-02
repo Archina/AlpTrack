@@ -1,8 +1,6 @@
 <script lang="ts">
     import Debug from "../components/Debug.svelte";
     import Entry from "../components/Entry.svelte";
-    import Nightmares from "../components/Nightmares.svelte";
-    import Time from "../components/Time.svelte";
 
     // Define an array of month names
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

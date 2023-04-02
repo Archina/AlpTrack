@@ -34,7 +34,6 @@
             width: 18px;
             height: 18px;
             border: none;
-            // border: 1px solid red;
             background-color: transparent;
             padding: 0px;
             cursor: pointer;
