@@ -23,11 +23,16 @@
         }));
     }
 
-    function edit_dream(idx: number, value: IDream | null) {
-        if(value){
+    function edit_dream(idx: number, value: string) {
+        if(value !== ''){
             store.update(state => ({
                 ...state,
-                entries: update_entry(state.entries, date, entry => ({dreams: entry.dreams.map((e, i) => i === idx ? value : e)}))
+                entries: update_entry(state.entries, date, entry => ({dreams: entry.dreams.map((e, i) => i === idx ? IDream[value as keyof typeof IDream] : e)}))
+            }));
+        } else {
+            store.update(state => ({
+                ...state,
+                entries: update_entry(state.entries, date, entry => ({dreams: entry.dreams.filter((_, i) => i !== idx)}))
             }));
         }
     }
@@ -42,7 +47,8 @@
 </script>
 {#if may_entry !== null}
 {#each may_entry.dreams as dream, index}
-<select name="dream" id={`${dream}_${index}`} value={IDream[dream]} on:change={e => edit_dream(index, parseInt(IDream[e.target?.value]))}>
+<select name="dream" id={`${dream}_${index}`} value={IDream[dream]} on:change={e => edit_dream(index, e.currentTarget.value)}>
+    <option value=''>❌</option>
     {#each enumKeys(IDream) as severity}
     <option style="color:green;" value={severity}>{map_dreams(IDream[severity])}</option>
     {/each}
