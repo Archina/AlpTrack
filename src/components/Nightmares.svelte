@@ -41,7 +41,7 @@
         switch(dream) {
             case IDream.Normal: return '😌';
             case IDream.SemiDistressing: return '😖';
-            case IDream.Distressing: return '😵‍💫';
+            case IDream.Distressing: return '😵';
         }
     }
 </script>
