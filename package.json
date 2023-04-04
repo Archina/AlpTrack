@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"date-fns": "^2.29.3",
 		"zod": "^3.21.4"
 	}
 }
