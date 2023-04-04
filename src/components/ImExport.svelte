@@ -1,6 +1,5 @@
 <script lang="ts">
     import {store, type IState} from '../store';
-    import { z } from "zod";
     import {stateSchema} from '../schema/state'
 
     let fileContent: IState | null = null;
@@ -26,9 +25,8 @@
                 let output = stateSchema.safeParse(data);
 
                 if(output.success){
-                    fileContent = output.data;
-                    console.log("Success");
-                    console.log(output.data);
+                    store.update(_ => output.data as IState);
+                    // fileContent = output.data;
                 } else{
                     throw output.error;
                 }
@@ -62,5 +60,29 @@
         URL.revokeObjectURL(url);
     }
 </script>
-<button on:click={downloadJson}>Expørt</button>
-<input type="file" accept=".json" on:change={e => handleFileInput(e)} />
+<label>
+    Expørt
+    <button on:click={downloadJson}></button>
+</label>
+<label>
+    Impørt
+    <input type="file" accept=".json" on:change={e => handleFileInput(e)} />
+</label>
+<style lang="scss">
+    label{
+        border: none;
+        color: black;
+        padding: 4px 8px;
+        background-color: #3a9fc0;
+        transition: background-color 0.34s;
+        cursor: pointer;
+
+        &:hover{
+            background-color: yellow;
+        }
+    }
+
+    input[type="file"], button{
+        display: none;
+    }
+</style>
