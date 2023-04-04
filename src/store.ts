@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { init } from 'svelte/internal';
 
-interface IState{
+export interface IState{
     entries: {
         [year_month_day: string]: IEntry
     }

@@ -1,6 +1,7 @@
 <script lang="ts">
     import Debug from "../components/Debug.svelte";
     import Entry from "../components/Entry.svelte";
+    import Export from "../components/ImExport.svelte";
 
     // Define an array of month names
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -23,7 +24,7 @@
         identifier: [currentYear, currentMonth, i+1] as [number, number, number]
     }))];
 </script>
-<h1 class="cell">AlpTrack Calendar</h1>
+<h1 class="cell">AlpTrack Calendar <Export /></h1>
 <h2 class="cell text-smol">by Desdemona, 4 Earth-Girl</h2>
 <div class="calendar">
     <div class="month-indicator cell">{months[currentMonth]} {currentYear}</div>
